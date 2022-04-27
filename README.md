@@ -5,6 +5,9 @@ Basic Config Controller setup managing resources under a GCP folder
 
 * GCP folder where KCC resources will live
 * Project under the folder where the config controller cluster will live
+* nomos, kubectl, and kpt CLI's
+
+`gcloud components install pkg` 
 
 # Cluster setup
 ```
