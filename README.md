@@ -77,3 +77,9 @@ git commit -m "Add landing zone"
 git push
 
 ```
+# Billing permisions for project creation 
+The [projects namespace](https://github.com/DaxterGoogle/blueprints/blob/main/catalog/landing-zone-lite/namespaces/projects.yaml#L132)  [ConfigConnectorContext](https://github.com/DaxterGoogle/blueprints/blob/main/catalog/landing-zone-lite/namespaces/projects.yaml#L138) [GCP service account](https://github.com/DaxterGoogle/blueprints/blob/main/catalog/landing-zone-lite/namespaces/projects.yaml#L15) requires billing account user to the billing account to allow it to create projects.
+
+A user with billing admin permisions on the  billing account will need to provide this 
+
+gcloud beta billing accounts add-iam-policy-binding billing-account-id --member=serviceAccount:projects-sa@${PROJECT_ID}.iam.gserviceaccount.com
