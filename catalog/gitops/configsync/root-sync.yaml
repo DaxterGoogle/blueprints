@@ -1,0 +1,16 @@
+apiVersion: configsync.gke.io/v1beta1
+kind: RootSync
+metadata:
+  name: root-sync
+  namespace: config-management-system
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  git:
+    revision: HEAD
+    auth: gcpserviceaccount
+    branch: master
+    dir: config # kpt-set: ${configsync-dir}
+    gcpServiceAccountEmail: sync-cluster-name@project-id.iam.gserviceaccount.com # kpt-set: sync-${cluster-name}@${project-id}.iam.gserviceaccount.com
+    repo: https://source.developers.google.com/p/project-id/r/deployment-repo # kpt-set: https://source.developers.google.com/p/${project-id}/r/${deployment-repo}
+  sourceFormat: unstructured
