@@ -1,4 +1,10 @@
-# blueprints
+# tldr
+Basic Config Controller setup managing resources under a GCP folder 
+
+# Prereqs
+
+* GCP folder where KCC resources will live
+* Project under the folder where the config controller cluster will live
 
 # Cluster setup
 ```
