@@ -90,23 +90,7 @@ spec:
     external: "123456789012" # kpt-set: ${folder-id}
   role: roles/resourcemanager.projectDeleter
   member: "serviceAccount:projects-sa@management-project-id.iam.gserviceaccount.com" # kpt-set: serviceAccount:projects-sa@${management-project-id}.iam.gserviceaccount.com
----
-apiVersion: iam.cnrm.cloud.google.com/v1beta1
-kind: IAMPolicyMember
-metadata:
-  name: projects-sa-billinguser-permissions
-  namespace: config-control # kpt-set: ${management-namespace}
-  annotations:
-    cnrm.cloud.google.com/blueprint: cnrm/landing-zone-lite/v0.1.0
-    cnrm.cloud.google.com/project-id: management-project-id # kpt-set: ${management-project-id}
-    cnrm.cloud.google.com/ignore-clusterless: "true"
-spec:
-  resourceRef:
-    apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
-    kind: Folder
-    external: "123456789012" # kpt-set: ${folder-id}
-  role: roles/billing.user
-  member: "serviceAccount:projects-sa@management-project-id.iam.gserviceaccount.com" # kpt-set: serviceAccount:projects-sa@${management-project-id}.iam.gserviceaccount.com
+
 ---
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPolicyMember
