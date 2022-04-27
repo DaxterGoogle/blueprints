@@ -82,7 +82,7 @@ git push
 
 ```
 # Billing permisions for project creation 
-The [projects namespace](https://github.com/DaxterGoogle/blueprints/blob/main/catalog/landing-zone-lite/namespaces/projects.yaml#L132)  [ConfigConnectorContext](https://github.com/DaxterGoogle/blueprints/blob/main/catalog/landing-zone-lite/namespaces/projects.yaml#L138) [GCP service account](https://github.com/DaxterGoogle/blueprints/blob/main/catalog/landing-zone-lite/namespaces/projects.yaml#L15) requires billing account user to the billing account to allow it to create projects.
+The [projects namespace](https://github.com/DaxterGoogle/blueprints/blob/main/catalog/landing-zone-lite/namespaces/projects.yaml#L132)  [ConfigConnectorContext](https://github.com/DaxterGoogle/blueprints/blob/main/catalog/landing-zone-lite/namespaces/projects.yaml#L138) [GCP service account](https://github.com/DaxterGoogle/blueprints/blob/main/catalog/landing-zone-lite/namespaces/projects.yaml#L15) requires the billing account user role on the billing account used to create projects.
 
 A user with billing admin permisions on the  billing account will need to provide this 
 
