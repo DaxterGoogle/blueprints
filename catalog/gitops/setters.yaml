@@ -22,7 +22,7 @@ data:
   project-id: project-id
   project-number: "1234567890123"
   # This should be the name of your Config Controller instance
-  cluster-name: cluster-name
+  cluster-name: config-controller-1
   # You can leave these defaults
   namespace: config-control
   deployment-repo: deployment-repo
