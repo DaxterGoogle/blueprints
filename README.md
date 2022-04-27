@@ -40,8 +40,8 @@ gcloud services enable cloudresourcemanager.googleapis.com
 # Gitops setup 
 
 ```
-
-kpt pkg get ssh://git@github.com/DaxterGoogle/blueprints.git/catalog/gitops@main
+kpt pkg get https://github.com/DaxterGoogle/blueprints.git/catalog/gitops@main
+# SSH -> kpt pkg get ssh://git@github.com/DaxterGoogle/blueprints.git/catalog/gitops@main
 #get project #
 gcloud projects describe ${PROJECT_ID} --format='get(projectNumber)'
 # Fill out gitops/setters.yaml
@@ -63,8 +63,8 @@ kubectl apply -f gitops/configsync/root-sync.yaml
 # Landing zone setup
 
 ```
-
-kpt pkg get ssh://git@github.com/DaxterGoogle/blueprints.git/catalog/landing-zone-lite@main
+kpt pkg get https://github.com/DaxterGoogle/blueprints.git/catalog/landing-zone-lite@main
+#SSH -> kpt pkg get ssh://git@github.com/DaxterGoogle/blueprints.git/
 # Fill out landing-zone-lite/setters.yaml
 git add landing-zone-lite/
 git commit -m "Add landing zone"
