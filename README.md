@@ -8,31 +8,27 @@ Basic Config Controller setup managing resources under a GCP folder
 
 # Cluster setup
 ```
-export PROJECT_ID=PROJECT_ID
-#PROJECT_ID is the project where the config controller cluster will live
+
+#Folder_ID is the preexisting folder where all KCC resources live under
+#PROJECT_ID is the preexisting project where the config controller cluster will live. The project should live inside the  folder.
+export FOLDER_ID=Change_Me_FOLDER_ID
+export PROJECT_ID=Change_Me_PROJECT_ID
 export CONFIG_CONTROLLER_NAME=config-controller-1
-#Folder_ID should be the root folder where all KCC resources live under
-export FOLDER_ID=FOLDER_ID
 
 
 gcloud config set project ${PROJECT_ID}
-
 mkdir  ${PROJECT_ID}
-
 cd  ${PROJECT_ID}
 
 gcloud services enable krmapihosting.googleapis.com container.googleapis.com
 
 gcloud anthos config controller create ${CONFIG_CONTROLLER_NAME} \
   --location=us-central1
-  
-
-gcloud anthos config controller get-credentials ${CONFIG_CONTROLLER_NAME} \
+  gcloud anthos config controller get-credentials ${CONFIG_CONTROLLER_NAME} \
   --location us-central1
 
 export SA_EMAIL="$(kubectl get ConfigConnectorContext -n config-control \
   -o jsonpath='{.items[0].spec.googleServiceAccount}' 2> /dev/null)"
-
 
 gcloud resource-manager folders add-iam-policy-binding "${FOLDER_ID}" \
   --member "serviceAccount:${SA_EMAIL}" \
@@ -43,7 +39,6 @@ gcloud resource-manager folders add-iam-policy-binding "${FOLDER_ID}" \
   --role "roles/resourcemanager.folderAdmin"
 
 gcloud services enable cloudresourcemanager.googleapis.com
-
 ```
 # Gitops setup 
 
