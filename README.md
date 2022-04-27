@@ -3,7 +3,9 @@
 # Cluster setup
 ```
 export PROJECT_ID=PROJECT_ID
+#PROJECT_ID is the project where the config controller cluster will live
 export CONFIG_CONTROLLER_NAME=config-controller-1
+#Folder_ID should be the root folder where all KCC resources live under
 export FOLDER_ID=FOLDER_ID
 
 
@@ -42,9 +44,13 @@ gcloud services enable cloudresourcemanager.googleapis.com
 ```
 kpt pkg get https://github.com/DaxterGoogle/blueprints.git/catalog/gitops@main
 # SSH -> kpt pkg get ssh://git@github.com/DaxterGoogle/blueprints.git/catalog/gitops@main
-#get project #
+
+#get project # for setters.yaml
 gcloud projects describe ${PROJECT_ID} --format='get(projectNumber)'
-# Fill out gitops/setters.yaml
+
+# Fill out project-id and project-number gitops/setters.yaml
+# This is the project where the config controller cluster lives
+
 kpt fn render gitops/
 kpt live init gitops/ --namespace config-control
 kpt live apply gitops/ --output table
@@ -64,8 +70,8 @@ kubectl apply -f gitops/configsync/root-sync.yaml
 
 ```
 kpt pkg get https://github.com/DaxterGoogle/blueprints.git/catalog/landing-zone-lite@main
-#SSH -> kpt pkg get ssh://git@github.com/DaxterGoogle/blueprints.git/
-# Fill out landing-zone-lite/setters.yaml
+# SSH -> kpt pkg get ssh://git@github.com/DaxterGoogle/blueprints.git/
+# Fill out folder-id and management-project-id landing-zone-lite/setters.yaml
 git add landing-zone-lite/
 git commit -m "Add landing zone"
 git push
